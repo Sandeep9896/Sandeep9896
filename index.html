@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #input{
+        width: 60%;
+        float: left;
+
+    }
+    #course{
+        width: 100%;
+    }
+    .width{
+        width: 100%;
+        height: 40px;
+    }
+    #output{
+        width: 38%;
+        height: 600px;
+        float:left ;
+        margin-left: 10px;
+    }
+    button{
+        width: 80%;
+        background-color: red;
+        height: 40px;
+        margin:auto;
+        margin-left: 10px;
+    }
+    
+</style>
+<script>
+    
+    function name(){
+        a=document.getElementById('fname').value;
+        if(a>='a'&&a<='z'){
+            return true;
+        }
+        else{
+           alert ("enter alphbet");
+            return false;
+            document.getElementById('fname').value=" ";
+        }
+
+    }
+</script>
+<body>
+        <div id="input">
+            <table  style="width: 100%; height: 600px;" cellspacing="10px">
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" placeholder="ABC..." id="fname" class="width" onkeypress=" return name()"></td>
+                </tr>
+                <tr>
+                    <td>last Name</td>
+                    <td> <input type="text" placeholder="abc..." id="lname" class="width"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" class="width"></td>
+                </tr>
+                <tr>
+                    <td>phone number</td>
+                    <td><input type="text" class="width"></td>
+                </tr>
+                <tr>
+                    <td>address</td>
+                    <td><textarea name="" id="" cols="30" rows="3" class="width"></textarea></td>
+                </tr>
+                <tr>
+                    <td>course</td>
+                    <td> <select name="course" id="course">
+                        <option value="">10th</option>
+                        <option value="">12th</option>
+                        <option value=""> graduation</option>
+                        <option value=""> post graduation</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>subject</td>
+                    <td><input type="checkbox" id="math">math
+                    <input type="checkbox" id="english">english
+                    <input type="checkbox" id="hindi">hindi
+                    <input type="checkbox" id="science">science
+                    <input type="checkbox" id="sst">sst
+                    </td>
+                </tr>
+                <tr>
+                    <td>time period</td>
+                    <td>
+                        <select name="time period" id="time">
+                            <option value="">1 day</option>
+                            <option value="">1 week</option>
+                            <option value="">1 month</option>
+                            <option value="">1 year</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>submission date</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr > <td></td>
+                    <td colspan="2"><button type="button">submit</button></td></tr>
+            </table>
+        </div>
+        <div id="output">
+            <table border="1px" style="width: 100%; height: 550px;">
+                <tr>
+                    <td><label for="">Submit information</label></td>
+                </tr>
+                  <tr>
+                    <td><label for="">First Name:</label></td>
+                </tr>
+                 <tr>
+                    <td><label for="">Last Name:</label></td>
+                </tr>
+                 <tr>
+                    <td><label for="">Email:</label></td>
+                </tr> <tr>
+                    <td><label for="">Phone Number:</label></td>
+                </tr> <tr>
+                    <td><label for="">Address:</label></td>
+                </tr>
+                 <tr>
+                    <td><label for="">Course:</label></td>
+                </tr> <tr>
+                    <td><label for="">Selected Subject:</label></td>
+                </tr> <tr>
+                    <td><label for="">Submission Date:</label></td>
+                </tr>
+                </table>
+        </div>
+</body>
+</html>
