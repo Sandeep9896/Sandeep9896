@@ -1,139 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
-    #input{
+    #input {
         width: 60%;
         float: left;
 
     }
-    #course{
+
+    #course {
         width: 100%;
     }
-    .width{
+
+    .width {
         width: 100%;
         height: 40px;
     }
-    #output{
+
+    #output {
         width: 38%;
         height: 600px;
-        float:left ;
+        float: left;
         margin-left: 10px;
     }
-    button{
+
+    button {
         width: 80%;
         background-color: red;
         height: 40px;
-        margin:auto;
+        margin: auto;
         margin-left: 10px;
     }
-    
+
+    span {
+        color: red;
+        font-style: bold;
+    }
 </style>
 <script>
-    
-    function name(){
-        a=document.getElementById('fname').value;
-        if(a>='a'&&a<='z'){
+
+
+
+    function onlyAlphabets() {
+
+        var charCode = event.keyCode;
+
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)) {
+            document.getElementById('errorname').innerHTML = " ";
             return true;
+
         }
-        else{
-           alert ("enter alphbet");
+
+        else {
+            document.getElementById('errorname').innerHTML = "enter alphabet";
             return false;
-            document.getElementById('fname').value=" ";
         }
 
     }
+    function onlynumber() {
+
+        var charCode = event.keyCode;
+
+        if ((charCode >= 48 && charCode <= 57 || charCode == 32 || charCode == 45)) {
+            document.getElementById('errornumber').innerHTML = " ";
+            return true;
+        }
+        else {
+            document.getElementById('errornumber').innerHTML = "enter munber";
+            return false;
+        }
+        var a = document.getElementById('number').value;
+
+    }
+
+    function validationEmail() {
+        var myemail = document.getElementById('email').value;
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (myemail.match(mailformat)) {
+            document.getElementById('erroremail').innerHTML = " ";
+            document.getElementById('fnameout').innerHTML = document.getElementById('fname').value;
+        document.getElementById('lnameout').innerHTML = document.getElementById('lname').value;
+        document.getElementById('emailout').innerHTML = document.getElementById('email').value;
+        document.getElementById('numberout').innerHTML = document.getElementById('number').value;
+        document.getElementById('addressout').innerHTML = document.getElementById('address').value;
+        document.getElementById('courseout').innerHTML = document.getElementById('course').value;
+        document.getElementById('dateout').innerHTML = document.getElementById('date').value;
+        document.getElementById('timeout').innerHTML = document.getElementById('time').value;
+   
+            return true;
+        }
+        else {
+            document.getElementById('erroremail').innerHTML = "enter valid email";
+            return false;
+        }
+
+    }
+    
 </script>
+
 <body>
-        <div id="input">
-            <table  style="width: 100%; height: 600px;" cellspacing="10px">
-                <tr>
-                    <td>First Name</td>
-                    <td><input type="text" placeholder="ABC..." id="fname" class="width" onkeypress=" return name()"></td>
-                </tr>
-                <tr>
-                    <td>last Name</td>
-                    <td> <input type="text" placeholder="abc..." id="lname" class="width"></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="text" class="width"></td>
-                </tr>
-                <tr>
-                    <td>phone number</td>
-                    <td><input type="text" class="width"></td>
-                </tr>
-                <tr>
-                    <td>address</td>
-                    <td><textarea name="" id="" cols="30" rows="3" class="width"></textarea></td>
-                </tr>
-                <tr>
-                    <td>course</td>
-                    <td> <select name="course" id="course">
+    <div id="input">
+        <form action="">
+        <table style="width: 100%; height: 600px;" cellspacing="10px">
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" placeholder="ABC..." id="fname" class="width"
+                        onkeypress="return onlyAlphabets()"> <span id="errorname"></span></td>
+            </tr>
+            <tr>
+                <td>last Name</td>
+                <td> <input type="text" placeholder="abc..." id="lname" class="width"
+                        onkeypress="return onlyAlphabets()"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" class="width" id="email"> <span id="erroremail"></span></td>
+            </tr>
+            <tr>
+                <td>phone number</td>
+                <td><input type="text" class="width" id="number" onkeypress="return onlynumber()" minlength="10"
+                        placeholder="+91-00000-00000"> <span id="errornumber"></span></td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td><textarea name="" id="address" cols="30" rows="3" class="width"></textarea></td>
+            </tr>
+            <tr>
+                <td>course</td>
+                <td> <select name="course" id="course">
                         <option value="">10th</option>
                         <option value="">12th</option>
                         <option value=""> graduation</option>
                         <option value=""> post graduation</option>
                     </select></td>
-                </tr>
-                <tr>
-                    <td>subject</td>
-                    <td><input type="checkbox" id="math">math
+            </tr>
+            <tr>
+                <td>subject</td>
+                <td><input type="checkbox" id="math">math
                     <input type="checkbox" id="english">english
                     <input type="checkbox" id="hindi">hindi
                     <input type="checkbox" id="science">science
                     <input type="checkbox" id="sst">sst
-                    </td>
-                </tr>
-                <tr>
-                    <td>time period</td>
-                    <td>
-                        <select name="time period" id="time">
-                            <option value="">1 day</option>
-                            <option value="">1 week</option>
-                            <option value="">1 month</option>
-                            <option value="">1 year</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>submission date</td>
-                    <td><input type="date"></td>
-                </tr>
-                <tr > <td></td>
-                    <td colspan="2"><button type="button">submit</button></td></tr>
-            </table>
-        </div>
-        <div id="output">
-            <table border="1px" style="width: 100%; height: 550px;">
-                <tr>
-                    <td><label for="">Submit information</label></td>
-                </tr>
-                  <tr>
-                    <td><label for="">First Name:</label></td>
-                </tr>
-                 <tr>
-                    <td><label for="">Last Name:</label></td>
-                </tr>
-                 <tr>
-                    <td><label for="">Email:</label></td>
-                </tr> <tr>
-                    <td><label for="">Phone Number:</label></td>
-                </tr> <tr>
-                    <td><label for="">Address:</label></td>
-                </tr>
-                 <tr>
-                    <td><label for="">Course:</label></td>
-                </tr> <tr>
-                    <td><label for="">Selected Subject:</label></td>
-                </tr> <tr>
-                    <td><label for="">Submission Date:</label></td>
-                </tr>
-                </table>
-        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>time period</td>
+                <td>
+                    <select name="time period" id="time">
+                        <option value="">1 day</option>
+                        <option value="">1 week</option>
+                        <option value="">1 month</option>
+                        <option value="">1 year</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>submission date</td>
+                <td><input type="date" id="date"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2"><button type="button" onclick=" return validationEmail()">submit</button>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+    <div id="output">
+        <table border="1px" style="width: 100%; height: 550px;">
+            <tr>
+                <td><label for="">Submit information</label></td>
+            </tr>
+            <tr>
+                <td><label for="">First Name:</label>
+                    <label for="" id="fnameout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Last Name:</label>
+                    <label for="" id="lnameout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Email:</label>
+                    <label for="" id="emailout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Phone Number:</label>
+                    <label for="" id="numberout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Address:</label>
+                    <label for="" id="addressout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Course:</label>
+                    <label for="" id="courseout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Selected Subject:</label>
+                    <label for="" id="subjectout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">time period:</label>
+                    <label for="" id="timeout"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Submission Date:</label>
+                    <label for="" id="dateout"></label>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
+
 </html>
+
+       
